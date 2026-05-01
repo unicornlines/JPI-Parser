@@ -11,3 +11,7 @@ __pycache__/
 
 # macOS
 .DS_Store
+
+# Local sample / scratch
+*.JPI
+jpi_csv/
