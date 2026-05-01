@@ -1,0 +1,21 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "jpi-analyzer"
+version = "0.2.0"
+description = "Parse JPI EDM flight data files and export them to CSV."
+readme = "README.md"
+requires-python = ">=3.10"
+authors = [{ name = "Sophie Bertsch" }]
+dependencies = [
+  "click>=8.1",
+]
+
+[project.scripts]
+jpi-analyzer = "jpi_analyzer.cli:main"
+jpia = "jpi_analyzer.cli:main"
+
+[tool.setuptools]
+packages = ["jpi_analyzer"]
