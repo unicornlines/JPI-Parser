@@ -8,7 +8,7 @@ version = "0.2.0"
 description = "Parse JPI EDM flight data files and export them to CSV."
 readme = "README.md"
 requires-python = ">=3.10"
-authors = [{ name = "Sophie Bertsch" }]
+authors = [{ name = "Unicornlines" }]
 dependencies = [
   "click>=8.1",
 ]
