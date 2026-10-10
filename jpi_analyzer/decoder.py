@@ -262,9 +262,7 @@ class FlightDecoder:
     def _decode_date_time(date_word: int, time_word: int) -> Optional[datetime]:
         """JPI packs date as bits day(5)|month(4)|year(7) and time as h(5)|m(6)|s2(5).
 
-        Seconds are stored in 2-second ticks. The original C# masks `time & 62`
-        — i.e. bits 1-5 — which intentionally drops the LSB so the value is an
-        even number 0..62.
+        Seconds are stored in 2-second ticks in bits 0-4.
         """
         if date_word <= 0 or time_word <= 0:
             return None
@@ -272,7 +270,7 @@ class FlightDecoder:
         month = (date_word >> 5) & 0x0F
         yy = (date_word >> 9) & 0x7F
         year = 2000 + yy if yy < 75 else 1900 + yy
-        sec = time_word & 62
+        sec = (time_word & 0x1F) * 2
         minute = (time_word >> 5) & 63
         hour = (time_word >> 11) & 31
         if sec >= 60:
